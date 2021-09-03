@@ -5,16 +5,16 @@ const URL = `http://${url}:${port}/${entryPoint}`;
 
 const resolvers = {
 	Query: {
-		allSamples: (_) =>
+		allSuppliers: (_) =>
 			getRequest(URL, '')
 	}
     ,
 	Mutation: {
-		createSample: (_, { sample }) =>
-			generalRequest(`${URL}/`, 'POST', sample),
-		updateSample: (_, { id, sample }) =>
-			generalRequest(`${URL}/${id}`, 'PUT', sample),
-		deleteSample: (_, { id }) =>
+		createSupplier: (_, { supplier }) =>
+			generalRequest(`${URL}/`, 'POST', supplier),
+		updateSupplier: (_, { id, supplier }) =>
+			generalRequest(`${URL}/${id}`, 'PUT', supplier),
+		deleteSupplier: (_, { id }) =>
 			generalRequest(`${URL}/${id}`, 'DELETE')
 	}
 };

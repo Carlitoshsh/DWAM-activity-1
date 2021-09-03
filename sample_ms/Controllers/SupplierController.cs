@@ -11,28 +11,24 @@ namespace sample_ms.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    public class SupplierController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
 
-        private readonly ILogger<WeatherForecastController> _logger;
-        private readonly DemoService _demoService;
+        private readonly ILogger<SupplierController> _logger;
+        private readonly SupplierService _demoService;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger, DemoService demoService)
+        public SupplierController(ILogger<SupplierController> logger, SupplierService demoService)
         {
             _logger = logger;
             _demoService = demoService;
         }
 
         [HttpGet]
-        public ActionResult<List<WeatherForecast>> Get() =>
+        public ActionResult<List<Suplier>> Get() =>
             _demoService.Get();
 
-        [HttpGet("{id:length(24)}", Name = "GetWeatherForecast")]
-        public ActionResult<WeatherForecast> Get(string id)
+        [HttpGet("{id}", Name = "GetWeatherForecast")]
+        public ActionResult<Suplier> Get(long id)
         {
             var demo = _demoService.Get(id);
 
@@ -45,15 +41,15 @@ namespace sample_ms.Controllers
         }
 
         [HttpPost]
-        public ActionResult<WeatherForecast> Create(WeatherForecast demo)
+        public ActionResult<Suplier> Create(Suplier demo)
         {
             _demoService.Create(demo);
 
-            return CreatedAtRoute("GetWeatherForecast", new { id = demo.Id.ToString() }, demo);
+            return CreatedAtRoute("GetWeatherForecast", new { id = demo.Id }, demo);
         }
 
-        [HttpPut("{id:length(24)}")]
-        public IActionResult Update(string id, WeatherForecast demoIn)
+        [HttpPut("{id}")]
+        public IActionResult Update(long id, Suplier demoIn)
         {
             var demo = _demoService.Get(id);
 
@@ -67,8 +63,8 @@ namespace sample_ms.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{id:length(24)}")]
-        public IActionResult Delete(string id)
+        [HttpDelete("{id}")]
+        public IActionResult Delete(long id)
         {
             var demo = _demoService.Get(id);
 

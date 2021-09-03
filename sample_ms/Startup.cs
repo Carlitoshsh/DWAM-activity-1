@@ -29,13 +29,13 @@ namespace sample_ms
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.Configure<AccountantDatabaseSettings>(
-                Configuration.GetSection(nameof(AccountantDatabaseSettings)));
+            services.Configure<SupplierDatabaseSettings>(
+                Configuration.GetSection(nameof(SupplierDatabaseSettings)));
 
-            services.AddSingleton<IAccountantDatabaseSettings>(sp =>
-                sp.GetRequiredService<IOptions<AccountantDatabaseSettings>>().Value);
+            services.AddSingleton<ISupplierDatabaseSettings>(sp =>
+                sp.GetRequiredService<IOptions<SupplierDatabaseSettings>>().Value);
 
-            services.AddSingleton<DemoService>();
+            services.AddSingleton<SupplierService>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
