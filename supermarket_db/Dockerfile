@@ -1,0 +1,8 @@
+FROM mysql:5.7
+# variables
+ENV MYSQL_ROOT_PASSWORD=123
+ENV MYSQL_DATABASE=supermarket_db
+ENV MYSQL_USER=supermarket_db
+ENV MYSQL_PASSWORD=2021
+# Port options
+EXPOSE 3306

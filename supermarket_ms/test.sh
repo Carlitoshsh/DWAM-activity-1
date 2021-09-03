@@ -1,0 +1,1 @@
+docker run -p 4000:4000 -e DB_HOST=host.docker.internal -e DB_PORT=13306 -e DB_USER=supermarket_db -e DB_PASSWORD=2021 -e DB_NAME=supermarket_db -e URL=0.0.0.0:4000 supermarket_ms
