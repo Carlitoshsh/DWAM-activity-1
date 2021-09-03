@@ -8,15 +8,15 @@ const resolvers = {
 		allSamples: (_) =>
 			getRequest(URL, '')
 	}
-    // ,
-	// Mutation: {
-	// 	createCategory: (_, { category }) =>
-	// 		generalRequest(`${URL}/`, 'POST', category),
-	// 	updateCategory: (_, { id, category }) =>
-	// 		generalRequest(`${URL}/${id}`, 'PUT', category),
-	// 	deleteCategory: (_, { id }) =>
-	// 		generalRequest(`${URL}/${id}`, 'DELETE')
-	// }
+    ,
+	Mutation: {
+		createSample: (_, { sample }) =>
+			generalRequest(`${URL}/`, 'POST', sample),
+		updateSample: (_, { id, sample }) =>
+			generalRequest(`${URL}/${id}`, 'PUT', sample),
+		deleteSample: (_, { id }) =>
+			generalRequest(`${URL}/${id}`, 'DELETE')
+	}
 };
 
 export default resolvers;
