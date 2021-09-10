@@ -21,3 +21,7 @@ docker stop supermarket_apicon
 
 # Remove container
 docker rm supermarket_apicon
+
+docker build -t supermarket_api .
+
+docker run -d -p 5000:5000 --name supermarket_apicon supermarket_api

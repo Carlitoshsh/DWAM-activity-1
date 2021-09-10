@@ -6,6 +6,12 @@ export const supplierTypeDef = `
         phone: String!
         address: String!
     }
+    type DemoResponse {
+        totalVowels: Int!
+    }
+    input DemoEntity {
+        category: String!
+    }
     input SupplierInput{
         id: Int!
         name: String!
@@ -24,4 +30,5 @@ export const supplierMutations = `
     createSupplier(supplier: SupplierInput!): Supplier!
     updateSupplier(id: Int!, supplier: SupplierInput!): Supplier!
     deleteSupplier(id: Int!): Int
+    countVowelsMS2(demoEntity: DemoEntity!): DemoResponse!
 `

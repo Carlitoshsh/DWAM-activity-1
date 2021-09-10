@@ -12,8 +12,11 @@ import {
 
 import { supplierMutations, supplierQueries, supplierTypeDef} from './supermarket/suppliers/typeDefs';
 
+import { orqMutations } from './supermarket/orquestation/typeDefsAux';
+
 import categoryResolvers from './supermarket/categories/resolvers';
 import supplierResolvers from './supermarket/suppliers/resolvers';
+import orqResolvers from './supermarket/orquestation/resolvers';
 
 // merge the typeDefs
 const mergedTypeDefs = mergeSchemas(
@@ -28,7 +31,8 @@ const mergedTypeDefs = mergeSchemas(
 	],
 	[
 		categoryMutations,
-		supplierMutations
+		supplierMutations,
+		orqMutations
 	]
 );
 
@@ -38,6 +42,7 @@ export default makeExecutableSchema({
 	resolvers: merge(
 		{ JSON: GraphQLJSON }, // allows scalar JSON
 		categoryResolvers,
-		supplierResolvers
+		supplierResolvers,
+		orqResolvers
 	)
 });

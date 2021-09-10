@@ -1,21 +1,24 @@
 import { generalRequest, getRequest } from '../../utilities';
-import { url, port, entryPoint } from './server';
+import { url, port, entryPoint, demoEndpoint } from './server';
 
-const URL = `http://${url}:${port}/${entryPoint}`;
+const URLEntry = `http://${url}:${port}/${entryPoint}`;
+const urlDemoMsg = `http://${url}:${port}/${demoEndpoint}`;
 
 const resolvers = {
 	Query: {
 		allSuppliers: (_) =>
-			getRequest(URL, '')
+			getRequest(URLEntry, '')
 	}
     ,
 	Mutation: {
 		createSupplier: (_, { supplier }) =>
-			generalRequest(`${URL}/`, 'POST', supplier),
+			generalRequest(`${URLEntry}/`, 'POST', supplier),
 		updateSupplier: (_, { id, supplier }) =>
-			generalRequest(`${URL}/${id}`, 'PUT', supplier),
+			generalRequest(`${URLEntry}/${id}`, 'PUT', supplier),
 		deleteSupplier: (_, { id }) =>
-			generalRequest(`${URL}/${id}`, 'DELETE')
+			generalRequest(`${URLEntry}/${id}`, 'DELETE'),
+		countVowelsMS2: (_, { demoEntity }) =>
+			generalRequest(`${urlDemoMsg}/`, 'POST', demoEntity),
 	}
 };
 
